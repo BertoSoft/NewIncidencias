@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/addFragment">
+
+
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.bertosoft.newincidencias.ui.add.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" />
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.bertosoft.newincidencias.ui.edit.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" />
+    <fragment
+        android:id="@+id/verFragment"
+        android:name="com.bertosoft.newincidencias.ui.ver.VerFragment"
+        android:label="fragment_ver"
+        tools:layout="@layout/fragment_ver" />
+</navigation>

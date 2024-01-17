@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">NewIncidencias</string>
+
+    <!-- Texto Iconos pantalla Add -->
+    <string name="HED">H.E.D.</string>
+    <string name="HEN">H.E.N.</string>
+    <string name="HEF">H.E.F.</string>
+    <string name="Voladuras">Plus Voladuras</string>
+
+    <!-- Textos  Insert Incidencias -->
+    <string name="add_voladuras">Plus de Voladuras, Guardado con Exito</string>
+    <string name="add_hed">Horas Extras Diurnas, guardadas con exito</string>
+    <string name="add_hen">Horas Extras Nocturnas, guardadas con exito</string>
+    <string name="add_hef">Horas Extras Festivas, guardadas con exito</string>
+
+    <!-- Textos  Update Incidencias -->
+    <string name="update_voladuras">Ya existe un plus de voladura con esta fecha, se procede a modificarlo</string>
+    <string name="update_horas">Ya existen incidencias en esta fecha, se procede a modificalas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
