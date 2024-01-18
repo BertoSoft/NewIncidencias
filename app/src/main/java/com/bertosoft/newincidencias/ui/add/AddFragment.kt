@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bertosoft.newincidencias.R
 import com.bertosoft.newincidencias.databinding.FragmentAddBinding
 import com.bertosoft.newincidencias.domain.model.AddEnumModel
 import com.bertosoft.newincidencias.domain.model.AddInfo

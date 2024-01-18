@@ -1,13 +1,11 @@
 package com.bertosoft.newincidencias.ui.add
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.bertosoft.newincidencias.domain.model.AddInfo
 import com.bertosoft.newincidencias.domain.model.AddInfo.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
