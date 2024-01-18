@@ -5,28 +5,92 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bertosoft.newincidencias.R
+import com.bertosoft.newincidencias.databinding.FragmentAddBinding
+import com.bertosoft.newincidencias.domain.model.AddEnumModel
+import com.bertosoft.newincidencias.domain.model.AddInfo
+import com.bertosoft.newincidencias.ui.add.adapter.AddAdapter
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AddFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class AddFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val addViewModel by viewModels<AddViewModel>()
+    private lateinit var addAdapter: AddAdapter
+    private var _binding: FragmentAddBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initUi()
+    }
+
+    private fun initUi() {
+        initRv()
+        initColectorDatos()
+    }
+
+    private fun initRv() {
+        addAdapter = AddAdapter(onItemSeleccionado = {
+            val seleccion = when(it){
+                AddInfo.HED -> AddEnumModel.HED
+                AddInfo.HEF -> AddEnumModel.HEF
+                AddInfo.HEN -> AddEnumModel.HEN
+                AddInfo.Voladuras -> AddEnumModel.Voladuras
+            }
+
+            //
+            // Si pulsamos voladuras guardamos directamente, si no llamamos a detalle
+            //
+            if(seleccion == AddEnumModel.Voladuras){
+                //guardarPlusVoladura()
+            }
+            else{
+                //findNavController().navigate(
+                //    AddFragmentDirections.actionAddFragmentToDetalleAddActivity(seleccion)
+                //)
+            }
+        })
+        binding.rvAdd.apply {
+            layoutManager = GridLayoutManager(context, 1)
+            adapter = addAdapter
+        }
+    }
+
+    /*
+    private fun guardarPlusVoladura() {
+
+        val respuesta = addViewModel.setPlusVoladuras(this.requireContext())
+
+        if(respuesta != ""){
+            Toast.makeText(this.requireContext(), respuesta, Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this.requireContext(), "Plus de voladuras, guardado con exito", Toast.LENGTH_SHORT).show()
+        }
+    }
+    */
+
+
+    private fun initColectorDatos() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                addViewModel.addDatos.collect {
+                    //
+                    // Ha habido cambios en addDatos
+                    //
+                    addAdapter.refrescaLista(it)
+                }
+            }
         }
     }
 
@@ -35,26 +99,12 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add, container, false)
+        _binding = FragmentAddBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
