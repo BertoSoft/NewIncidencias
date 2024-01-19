@@ -1,5 +1,6 @@
 package com.bertosoft.newincidencias.ui.add
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.bertosoft.newincidencias.domain.model.AddInfo
 import com.bertosoft.newincidencias.domain.model.AddInfo.*
@@ -18,4 +19,7 @@ class AddViewModel @Inject constructor() : ViewModel() {
         _addDatos.value = listOf(HED, HEN, Voladuras, HEF)
     }
 
+    fun setPlusVoladuras(contexto: Context): String {
+        TODO("Not yet implemented")
+    }
 }

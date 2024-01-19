@@ -10,7 +10,11 @@
         android:id="@+id/addFragment"
         android:name="com.bertosoft.newincidencias.ui.add.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_addHorasActivity"
+            app:destination="@id/addHorasActivity" />
+    </fragment>
     <fragment
         android:id="@+id/editFragment"
         android:name="com.bertosoft.newincidencias.ui.edit.EditFragment"
@@ -21,4 +25,13 @@
         android:name="com.bertosoft.newincidencias.ui.ver.VerFragment"
         android:label="fragment_ver"
         tools:layout="@layout/fragment_ver" />
+    <activity
+        android:id="@+id/addHorasActivity"
+        android:name="com.bertosoft.newincidencias.ui.detalleadd.AddHorasActivity"
+        android:label="activity_add_horas"
+        tools:layout="@layout/activity_add_horas" >
+        <argument
+            android:name="args"
+            app:argType="com.bertosoft.newincidencias.domain.model.AddEnumModel" />
+    </activity>
 </navigation>

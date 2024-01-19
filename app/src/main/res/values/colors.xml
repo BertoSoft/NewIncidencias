@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="primario">#4F4D4D</color>
+    <color name="primario_transparente">#804F4D4D</color>
     <color name="primarioOscuro">#141414</color>
     <color name="secundario">#F2AC45</color>
     <color name="claro">#CDDC39</color>

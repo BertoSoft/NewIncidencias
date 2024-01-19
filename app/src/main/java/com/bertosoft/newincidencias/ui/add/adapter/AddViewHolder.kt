@@ -17,20 +17,7 @@ class AddViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         binding.tvAdd.text = context.getString(addInfo.texto)
 
         binding.parenRv.setOnClickListener {
-            comienzaAnimacionRotacion(
-                binding.ivAdd,
-                nuevaLambda = { onItemSeleccionado(addInfo) })
-        }
-    }
-
-    private fun comienzaAnimacionRotacion(view: View, nuevaLambda: () -> Unit) {
-
-        view.animate().apply {
-            duration = 500
-            interpolator = LinearInterpolator()
-            rotationBy(360f)
-            withEndAction(nuevaLambda)
-            start()
+            onItemSeleccionado(addInfo)
         }
     }
 }
