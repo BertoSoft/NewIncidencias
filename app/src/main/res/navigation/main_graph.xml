@@ -27,11 +27,11 @@
         tools:layout="@layout/fragment_ver" />
     <activity
         android:id="@+id/addHorasActivity"
-        android:name="com.bertosoft.newincidencias.ui.detalleadd.AddHorasActivity"
+        android:name="com.bertosoft.newincidencias.ui.addhoras.AddHorasActivity"
         android:label="activity_add_horas"
         tools:layout="@layout/activity_add_horas" >
         <argument
-            android:name="args"
+            android:name="seleccion"
             app:argType="com.bertosoft.newincidencias.domain.model.AddEnumModel" />
     </activity>
 </navigation>

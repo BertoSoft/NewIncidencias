@@ -13,7 +13,7 @@ class Repositorio @Inject constructor(private val funcAux: FuncAux): Repositorio
 
     override suspend fun setPlusVoladuras(incidencias: IncidenciasModelData): String {
         //
-        // Recibimos lo datos ya codificados y los grabamos
+        // comprobamos si hya algun plus de voladura en esa fecha
         //
         val idRegistro = funcAux.existeRegistroFecha(incidencias.contexto, incidencias.fecha)
 

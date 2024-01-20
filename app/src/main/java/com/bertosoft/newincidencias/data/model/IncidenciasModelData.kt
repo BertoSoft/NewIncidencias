@@ -3,7 +3,6 @@ package com.bertosoft.newincidencias.data.model
 import android.content.Context
 import com.bertosoft.incidencias.data.funciones.FuncAux
 import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
-import java.util.Calendar
 
 data class IncidenciasModelData (
     val iId: Int,
