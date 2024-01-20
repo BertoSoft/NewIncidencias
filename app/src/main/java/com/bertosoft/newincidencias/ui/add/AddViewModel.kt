@@ -2,24 +2,61 @@ package com.bertosoft.newincidencias.ui.add
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.bertosoft.incidencias.data.funciones.FuncAux
+import com.bertosoft.newincidencias.R
 import com.bertosoft.newincidencias.domain.model.AddInfo
 import com.bertosoft.newincidencias.domain.model.AddInfo.*
+import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
+import com.bertosoft.newincidencias.domain.usecase.SetPlusVoladurasUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
-class AddViewModel @Inject constructor() : ViewModel() {
+class AddViewModel @Inject constructor(
+    private val funcAux: FuncAux,
+    private val setPlusVoladurasUseCase: SetPlusVoladurasUseCase
+) : ViewModel() {
 
     private var _addDatos = MutableStateFlow<List<AddInfo>>(emptyList())
     val addDatos: StateFlow<List<AddInfo>> = _addDatos
+    private var _state = MutableStateFlow<AddState>(AddState.TodoOk(""))
+    val state: StateFlow<AddState> = _state
 
     init {
-        _addDatos.value = listOf(HED, HEN, Voladuras, HEF)
+        _addDatos.value = listOf(HED, HEN, HEF, Voladuras)
     }
 
-    fun setPlusVoladuras(contexto: Context): String {
-        TODO("Not yet implemented")
+    fun setPlusVoladuras(contexto: Context){
+        val fecha = funcAux.strFechaCortaFromCalendar(Calendar.getInstance())
+        var respuesta = ""
+        val incidencias = IncidenciasModelDomain(
+            -1,
+            contexto,
+            fecha,
+            "",
+            "",
+            "",
+            "0.5"
+        )
+        viewModelScope.launch {
+            // Hilo Principal
+            _state.value = AddState.EnEspera
+            val result = with(Dispatchers.IO) {
+                // Hilo secundario
+                respuesta = setPlusVoladurasUseCase(incidencias)
+            }
+            if(result != null){
+                _state.value = AddState.TodoOk(respuesta)
+            }
+            else{
+                _state.value = AddState.Error(incidencias.contexto.getString(R.string.error_database))
+            }
+        }
     }
 }

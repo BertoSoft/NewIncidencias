@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -36,6 +37,35 @@ class AddFragment : Fragment() {
     private fun initUi() {
         initRv()
         initColectorDatos()
+        initUiState()
+    }
+
+    private fun initUiState() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                addViewModel.state.collect {
+                    when(it){
+                        AddState.EnEspera -> enEsperaState()
+                        is AddState.Error -> errorState(it.error)
+                        is AddState.TodoOk -> todoOkState(it.respuesta)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun todoOkState(respuesta: String) {
+        binding.pbEnEspera.isVisible = false
+        Toast.makeText(this.requireContext(), respuesta, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun errorState(error: String) {
+        binding.pbEnEspera.isVisible = false
+        Toast.makeText(this.requireContext(), error, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun enEsperaState() {
+        binding.pbEnEspera.isVisible = true
     }
 
     private fun initRv() {
@@ -51,7 +81,7 @@ class AddFragment : Fragment() {
             // Si pulsamos voladuras guardamos directamente, si no llamamos a detalle
             //
             if(seleccion == AddEnumModel.Voladuras){
-                //guardarPlusVoladura()
+                guardarPlusVoladura()
             }
             else{
                 findNavController().navigate(
@@ -67,14 +97,8 @@ class AddFragment : Fragment() {
 
     private fun guardarPlusVoladura() {
 
-        val respuesta = addViewModel.setPlusVoladuras(this.requireContext())
+        addViewModel.setPlusVoladuras(this.requireContext())
 
-        if(respuesta != ""){
-            Toast.makeText(this.requireContext(), respuesta, Toast.LENGTH_SHORT).show()
-        }
-        else{
-            Toast.makeText(this.requireContext(), "Plus de voladuras, guardado con exito", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun initColectorDatos() {

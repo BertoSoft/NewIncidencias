@@ -14,8 +14,12 @@
     <string name="add_hef">Horas Extras Festivas, guardadas con exito</string>
 
     <!-- Textos  Update Incidencias -->
-    <string name="update_voladuras">Ya existe un plus de voladura con esta fecha, se procede a modificarlo</string>
+    <string name="update_voladuras">Ya existe un plus de voladura con esta fecha</string>
     <string name="update_horas">Ya existen incidencias en esta fecha, se procede a modificalas</string>
+
+    <!-- Textos  Update Incidencias -->
+    <string name="error_database">Se produjo un error al acceder a la base de datos</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
