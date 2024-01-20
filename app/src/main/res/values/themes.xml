@@ -27,7 +27,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
         <item name="android:textSize">60sp</item>
-        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textColor">@color/naranja</item>
     </style>
 
 

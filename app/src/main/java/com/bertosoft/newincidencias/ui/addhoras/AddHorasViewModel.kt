@@ -15,7 +15,20 @@ class AddHorasViewModel @Inject constructor(): ViewModel(){
     val addDatos: StateFlow<List<String>> = _addDatos
 
     init {
-        _addDatos.value = listOf("1", "1.5", "2", "2.5", "3")
+        _addDatos.value = listOf(
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5",
+            "6",
+            "6.5"
+        )
     }
 
     fun setHoras(fecha: String, cantidad: String, tipo: String): String {
