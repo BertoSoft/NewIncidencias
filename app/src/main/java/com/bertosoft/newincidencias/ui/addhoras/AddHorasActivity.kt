@@ -2,6 +2,7 @@ package com.bertosoft.newincidencias.ui.addhoras
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -49,13 +50,24 @@ class AddHorasActivity : AppCompatActivity() {
             if(cantidad != ""){
                 val fecha = FuncAux().strFechaCortaFromCalendar(Calendar.getInstance())
                 val respuesta = addHorasViewModel.setHoras(this, fecha, cantidad, args.seleccion)
+                informar(respuesta)
+                salir()
             }
+
         })
 
         binding.rvNumerico.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = addHorasAdapter
         }
+    }
+
+    private fun salir() {
+        finish()
+    }
+
+    private fun informar(respuesta: String) {
+        Toast.makeText(this, respuesta, Toast.LENGTH_SHORT).show()
     }
 
     private fun initColectorDatos() {

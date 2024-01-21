@@ -13,8 +13,13 @@
     <string name="add_hen">Horas Extras Nocturnas, guardadas con exito</string>
     <string name="add_hef">Horas Extras Festivas, guardadas con exito</string>
 
+
+
     <!-- Textos  Update Incidencias -->
     <string name="update_voladuras">Ya existe un plus de voladura con esta fecha</string>
+    <string name="update_horas_add_voladuras">Ya existen incidencias, se añade plus de voladura</string>
+    <string name="update_voladuras_add_horas">Ya existe un plus de voladura con esta fecha, se añaden las incidencias</string>
+    <string name="update_voladuras_update_horas">Ya existe un plus de voladura con esta fecha, se modifican las incidencias</string>
     <string name="update_horas">Ya existen incidencias en esta fecha, se procede a modificalas</string>
 
     <!-- Textos  Update Incidencias -->
