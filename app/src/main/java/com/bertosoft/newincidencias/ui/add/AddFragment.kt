@@ -12,12 +12,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bertosoft.incidencias.data.funciones.FuncAux
 import com.bertosoft.newincidencias.databinding.FragmentAddBinding
 import com.bertosoft.newincidencias.domain.model.AddEnumModel
 import com.bertosoft.newincidencias.domain.model.AddInfo
 import com.bertosoft.newincidencias.ui.add.adapter.AddAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class AddFragment : Fragment() {
@@ -66,8 +68,8 @@ class AddFragment : Fragment() {
     }
 
     private fun guardarPlusVoladura() {
-
-        val respuesta = addViewModel.setPlusVoladuras(this.requireContext())
+        val fecha = FuncAux().strFechaCortaFromCalendar(Calendar.getInstance())
+        val respuesta = addViewModel.setPlusVoladuras(this.requireContext(), fecha)
         Toast.makeText(this.requireContext(), respuesta, Toast.LENGTH_SHORT).show()
     }
 

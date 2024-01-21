@@ -38,4 +38,29 @@ class Repositorio @Inject constructor(private val funcAux: FuncAux): Repositorio
         }
         return incidencias.contexto.getString(R.string.add_voladuras)
     }
+
+    override suspend fun setHoras(incidencias: IncidenciasModelData): String {
+        var voladuras = ""
+        val idRegistroFecha = funcAux.existeRegistroFecha(incidencias.contexto, incidencias.fecha)
+        if(idRegistroFecha > 0){
+            voladuras = funcAux.leerVoladurasFromId(incidencias.contexto, idRegistroFecha)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return ""
+    }
+
+
+
 }

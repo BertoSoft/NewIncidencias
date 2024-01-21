@@ -12,7 +12,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,8 +27,7 @@ class AddViewModel @Inject constructor(
         _addDatos.value = listOf(HED, HEN, HEF, Voladuras)
     }
 
-    fun setPlusVoladuras(contexto: Context): String{
-        val fecha = funcAux.strFechaCortaFromCalendar(Calendar.getInstance())
+    fun setPlusVoladuras(contexto: Context, fecha: String): String{
         var respuesta = ""
         val incidencias = IncidenciasModelDomain(
             -1,

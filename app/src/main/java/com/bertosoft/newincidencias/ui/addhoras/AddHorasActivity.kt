@@ -45,16 +45,13 @@ class AddHorasActivity : AppCompatActivity() {
 
         addHorasAdapter = AddHorasAdapter(onNumeroSeleccionado = {
             cantidad = it
+
+            if(cantidad != ""){
+                val fecha = FuncAux().strFechaCortaFromCalendar(Calendar.getInstance())
+                val respuesta = addHorasViewModel.setHoras(this, fecha, cantidad, args.seleccion)
+            }
         })
 
-        val tipo = when(args.seleccion){
-            AddEnumModel.HED -> "hed"
-            AddEnumModel.HEN -> "hen"
-            AddEnumModel.HEF -> "hef"
-            AddEnumModel.Voladuras -> ""
-        }
-        val fecha = FuncAux().strFechaCortaFromCalendar(Calendar.getInstance())
-        val respuesta = addHorasViewModel.setHoras(fecha, cantidad, tipo)
         binding.rvNumerico.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = addHorasAdapter
