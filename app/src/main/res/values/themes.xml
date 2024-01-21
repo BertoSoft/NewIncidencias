@@ -30,5 +30,26 @@
         <item name="android:textColor">@color/naranja</item>
     </style>
 
+    <style name="FechaEdit">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BotonMasEdit">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="BotonMenosEdit">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:textSize">42sp</item>
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
 
 </resources>

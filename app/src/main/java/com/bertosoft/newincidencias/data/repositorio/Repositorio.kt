@@ -29,6 +29,7 @@ class Repositorio @Inject constructor(private val funcAux: FuncAux): Repositorio
                     "'${incidencias.hen}'," +
                     "'${incidencias.hef}'," +
                     "'${incidencias.voladuras}');"
+            sqlWriteDb.execSQL(strSql)
             respuesta = incidencias.contexto.getString(R.string.add_voladuras)
         }
         else{
@@ -39,6 +40,7 @@ class Repositorio @Inject constructor(private val funcAux: FuncAux): Repositorio
                         "${incidencias.hen}', Hef = '" +
                         "${incidencias.hef}', Voladuras = '" +
                         "${incidencias.voladuras}' WHERE _id = $idRegistro;"
+                sqlWriteDb.execSQL(strSql)
                 respuesta = incidencias.contexto.getString(R.string.update_horas_add_voladuras)
 
             }
@@ -46,7 +48,6 @@ class Repositorio @Inject constructor(private val funcAux: FuncAux): Repositorio
                 respuesta =  incidencias.contexto.getString(R.string.update_voladuras)
             }
         }
-        sqlWriteDb.execSQL(strSql)
         sqlWriteDb.close()
         adminDbHlper.close()
         return respuesta

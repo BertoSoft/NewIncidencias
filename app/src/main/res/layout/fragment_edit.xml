@@ -1,15 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/azul"
-    tools:context=".ui.edit.EditFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/primario"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.edit.EditFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvFecha"
+            style="@style/FechaEdit"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ibMas"
+            app:layout_constraintStart_toEndOf="@id/ibMenos"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ibMas"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/azul"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMas"
+            style="@style/BotonMasEdit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="+"
+            app:layout_constraintBottom_toBottomOf="@id/ibMas"
+            app:layout_constraintEnd_toEndOf="@id/ibMas"
+            app:layout_constraintStart_toStartOf="@id/ibMas"
+            app:layout_constraintTop_toTopOf="@id/ibMas" />
+
+        <ImageButton
+            android:id="@+id/ibMenos"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/azul"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMenos"
+            style="@style/BotonMenosEdit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="24sp"
+            android:gravity="center"
+            android:text="-"
+            app:layout_constraintBottom_toBottomOf="@id/ibMenos"
+            app:layout_constraintEnd_toEndOf="@id/ibMenos"
+            app:layout_constraintStart_toStartOf="@id/ibMenos"
+            app:layout_constraintTop_toTopOf="@id/ibMenos" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

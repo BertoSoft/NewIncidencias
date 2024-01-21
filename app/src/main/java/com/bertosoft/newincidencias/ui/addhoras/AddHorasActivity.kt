@@ -31,6 +31,7 @@ class AddHorasActivity : AppCompatActivity() {
         binding = ActivityAddHorasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         initListeners()
         initUi()
     }
