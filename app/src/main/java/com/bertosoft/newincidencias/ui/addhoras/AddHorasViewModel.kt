@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bertosoft.newincidencias.domain.model.AddEnumModel
 import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
-import com.bertosoft.newincidencias.domain.usecase.SetHorasUseCase
+import com.bertosoft.newincidencias.domain.usecase.GetIncidenciasUseCase
+import com.bertosoft.newincidencias.domain.usecase.SetIncidenciasUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,7 +14,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddHorasViewModel @Inject constructor(private val setHorasUseCase: SetHorasUseCase): ViewModel(){
+class AddHorasViewModel @Inject constructor(
+    private val setIncidenciasUseCase: SetIncidenciasUseCase,
+    private val getIncidenciasUseCase: GetIncidenciasUseCase
+): ViewModel(){
 
     private var _addDatos = MutableStateFlow<List<String>>(emptyList())
     val addDatos: StateFlow<List<String>> = _addDatos
@@ -35,7 +39,25 @@ class AddHorasViewModel @Inject constructor(private val setHorasUseCase: SetHora
         )
     }
 
+    fun getIncidencias(contexto: Context, fecha: String): IncidenciasModelDomain{
+        var incidencias = IncidenciasModelDomain(
+            -1,
+            contexto,
+            fecha,
+            "",
+            "",
+            "",
+            ""
+        )
+        viewModelScope.launch {
+            incidencias = getIncidenciasUseCase(contexto, fecha)
+        }
+        return incidencias
+    }
+
     fun setHoras(contexto: Context, fecha: String, cantidad: String, tipo: AddEnumModel): String {
+        val incidenciasDb = getIncidencias(contexto, fecha)
+
         var respuesta = ""
         var hed = ""
         var hen = ""
@@ -54,10 +76,10 @@ class AddHorasViewModel @Inject constructor(private val setHorasUseCase: SetHora
             hed,
             hen,
             hef,
-            ""
+            incidenciasDb.voladuras
         )
         viewModelScope.launch {
-            respuesta = setHorasUseCase(incidencias)
+            respuesta = setIncidenciasUseCase(incidencias)
         }
         return respuesta
     }

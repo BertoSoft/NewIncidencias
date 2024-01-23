@@ -11,7 +11,7 @@ data class IncidenciasModelDomain(
     val hed: String,
     val hen: String,
     val hef: String,
-    val voladuras: String,
+    var voladuras: String,
 ) {
     fun toData(): IncidenciasModelData {
         var fechaCod = ""

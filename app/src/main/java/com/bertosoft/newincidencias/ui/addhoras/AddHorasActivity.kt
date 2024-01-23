@@ -11,7 +11,6 @@ import androidx.navigation.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bertosoft.incidencias.data.funciones.FuncAux
 import com.bertosoft.newincidencias.databinding.ActivityAddHorasBinding
-import com.bertosoft.newincidencias.domain.model.AddEnumModel
 import com.bertosoft.newincidencias.ui.addhoras.adapter.AddHorasAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

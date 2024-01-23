@@ -17,6 +17,7 @@
             style="@style/FechaEdit"
             android:layout_width="0dp"
             android:layout_height="75dp"
+            android:layout_marginTop="56dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:background="@color/white"
@@ -30,7 +31,7 @@
             android:id="@+id/ibMas"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
             android:background="@color/azul"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +53,7 @@
             android:id="@+id/ibMenos"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="64dp"
             android:layout_marginStart="8dp"
             android:background="@color/azul"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +71,109 @@
             app:layout_constraintEnd_toEndOf="@id/ibMenos"
             app:layout_constraintStart_toStartOf="@id/ibMenos"
             app:layout_constraintTop_toTopOf="@id/ibMenos" />
+
+
+
+        <TextView
+            android:id="@+id/tvHed"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            style="@style/TextViewEditIncidencias"
+            android:text="@string/edit_hed"
+            app:layout_constraintTop_toBottomOf="@id/tvFecha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etHed"/>
+
+        <EditText
+            android:id="@+id/etHed"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="12dp"
+            android:inputType="numberDecimal"
+            style="@style/TextViewEditIncidencias"
+            android:gravity="center"
+            tools:text="1.5"
+            app:layout_constraintTop_toBottomOf="@id/tvFecha"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvHen"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            style="@style/TextViewEditIncidencias"
+            android:text="@string/edit_hen"
+            app:layout_constraintTop_toBottomOf="@id/tvHed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etHed"/>
+
+        <EditText
+            android:id="@+id/etHen"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:inputType="numberDecimal"
+            style="@style/TextViewEditIncidencias"
+            android:gravity="center"
+            tools:text="1.5"
+            app:layout_constraintTop_toBottomOf="@id/tvHed"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvHef"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            style="@style/TextViewEditIncidencias"
+            android:text="@string/edit_hef"
+            app:layout_constraintTop_toBottomOf="@id/etHen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etHed"/>
+
+        <EditText
+            android:id="@+id/etHef"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:inputType="numberDecimal"
+            style="@style/TextViewEditIncidencias"
+            android:gravity="center"
+            tools:text="1.5"
+            app:layout_constraintTop_toBottomOf="@id/etHen"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvVoladuras"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            style="@style/TextViewEditIncidencias"
+            android:text="@string/edit_voladuras"
+            app:layout_constraintTop_toBottomOf="@id/tvHef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etHed"/>
+
+        <CheckBox
+            android:id="@+id/chkVoladuras"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tvHef"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

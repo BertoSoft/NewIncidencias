@@ -7,25 +7,25 @@
     <string name="HEF">H.E.F.</string>
     <string name="Voladuras">Plus Voladuras</string>
 
+
     <!-- Textos  Insert Incidencias -->
     <string name="add_voladuras">Plus de Voladuras, Guardado con Exito</string>
     <string name="add_hed">Horas Extras Diurnas, guardadas con exito</string>
     <string name="add_hen">Horas Extras Nocturnas, guardadas con exito</string>
     <string name="add_hef">Horas Extras Festivas, guardadas con exito</string>
 
-
-
     <!-- Textos  Update Incidencias -->
-    <string name="update_voladuras">Ya existe un plus de voladura con esta fecha</string>
-    <string name="update_horas_add_voladuras">Ya existen incidencias, se añade plus de voladura</string>
-    <string name="update_voladuras_add_horas">Ya existe un plus de voladura con esta fecha, se añaden las incidencias</string>
-    <string name="update_voladuras_update_horas">Ya existe un plus de voladura con esta fecha, se modifican las incidencias</string>
-    <string name="update_horas">Ya existen incidencias en esta fecha, se procede a modificalas</string>
+    <string name="update_incidencias">Ya existen incidencias en esta fecha, se procede a modificalas</string>
 
     <!-- Textos  Update Incidencias -->
     <string name="error_database">Se produjo un error al acceder a la base de datos</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Textos TextView editIncidencias -->
+    <string name="edit_hed">Horas Extras Diurnas</string>
+    <string name="edit_hen">Horas Extras Nocturnas</string>
+    <string name="edit_hef">Horas Extras Festivas</string>
+    <string name="edit_voladuras">Plus de voladuras</string>
 
 </resources>
