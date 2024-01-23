@@ -42,11 +42,10 @@ class EditViewModel @Inject constructor(
         if(dato != ""){
             double = dato.toDouble()
         }
-        if(double == 0.0){
-            return ""
-        }
-        else{
-            return double.toString()
+        return if(double == 0.0){
+            ""
+        } else{
+            double.toString()
         }
     }
 
