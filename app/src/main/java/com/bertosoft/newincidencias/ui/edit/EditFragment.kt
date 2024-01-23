@@ -84,9 +84,9 @@ class EditFragment : Fragment() {
 
     private fun rellenaCampos() {
         val incidencias = editViewModel.getIncidencias(this.requireContext(), FuncAux().strFechaCortaFromCalendar(fecha))
-        binding.etHed.setText(incidencias.hed)
-        binding.etHen.setText(incidencias.hen)
-        binding.etHef.setText(incidencias.hef)
+        binding.etHed.setText(editViewModel.toTextView(incidencias.hed))
+        binding.etHen.setText(editViewModel.toTextView(incidencias.hen))
+        binding.etHef.setText(editViewModel.toTextView(incidencias.hef))
         binding.chkVoladuras.isChecked = incidencias.voladuras == "0.5"
     }
 

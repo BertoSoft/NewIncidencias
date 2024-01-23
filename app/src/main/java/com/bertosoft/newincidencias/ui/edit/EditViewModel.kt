@@ -37,4 +37,17 @@ class EditViewModel @Inject constructor(
         }
     }
 
+    fun toTextView(dato: String): String{
+        var double = 0.0
+        if(dato != ""){
+            double = dato.toDouble()
+        }
+        if(double == 0.0){
+            return ""
+        }
+        else{
+            return double.toString()
+        }
+    }
+
 }
