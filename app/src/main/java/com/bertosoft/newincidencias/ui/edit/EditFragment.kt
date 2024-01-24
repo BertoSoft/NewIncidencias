@@ -2,6 +2,8 @@ package com.bertosoft.newincidencias.ui.edit
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -60,18 +62,61 @@ class EditFragment : Fragment() {
             binding.tvFecha.text = FuncAux().strFechaCortaFromCalendar(fecha)
             rellenaCampos()
         }
+
+        binding.etHed.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus){
+                binding.etHed.postDelayed(
+                    {
+                        binding.etHed.selectAll()
+                    },50
+                )
+            }
+        }
+        binding.etHen.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus){
+                binding.etHen.postDelayed(
+                    {
+                        binding.etHen.selectAll()
+                    },50
+                )
+            }
+        }
+        binding.etHef.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus){
+                binding.etHef.postDelayed(
+                    {
+                        binding.etHef.selectAll()
+                    },50
+                )            }
+        }
+
+        binding.etHef.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if(keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP ){
+                binding.etHef.postDelayed(
+                    {
+                        FuncAux().ocultarTeclado(binding.etHef.context, binding.etHef)
+                    },50
+                )
+                return@OnKeyListener true
+            }
+            false
+        })
+
     }
 
     private fun guardaValores() {
+        val hed = editViewModel.toTextView(binding.etHed.text.toString())
+        val hen = editViewModel.toTextView(binding.etHen.text.toString())
+        val hef = editViewModel.toTextView(binding.etHef.text.toString())
         var voladuras = ""
         if (binding.chkVoladuras.isChecked) voladuras = "0.5"
         val incidencias = IncidenciasModelDomain(
             -1,
             this.requireContext(),
             FuncAux().strFechaCortaFromCalendar(fecha),
-            binding.etHed.text.toString(),
-            binding.etHen.text.toString(),
-            binding.etHef.text.toString(),
+            hed,
+            hen,
+            hef,
             voladuras
         )
         editViewModel.setIncidencias(incidencias)

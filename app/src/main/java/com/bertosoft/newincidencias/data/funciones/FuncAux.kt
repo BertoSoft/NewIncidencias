@@ -1,6 +1,10 @@
 package com.bertosoft.incidencias.data.funciones
 
 import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.bertosoft.incidencias.data.database.AdminDbHelper
 import java.security.SecureRandom
 import java.text.SimpleDateFormat
@@ -75,6 +79,21 @@ class FuncAux @Inject constructor() {
         val strTextoDecodificado = String(plainText)
 
         return strTextoDecodificado
+    }
+
+    fun mostrarTeclado(miContexto: Context, miTxt: EditText) {
+        val imm =
+            miContexto.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+        miTxt.postDelayed(
+            {
+                imm.showSoftInput(miTxt, 0)
+            }, 50
+        )
+    }
+
+    fun ocultarTeclado(miContexto: Context, miTxt: EditText) {
+        val imm = miContexto.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm!!.hideSoftInputFromWindow(miTxt.getWindowToken(), 0)
     }
 
     fun existeRegistroFecha(contexto: Context, fechaCod: String): Int{

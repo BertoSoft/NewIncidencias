@@ -24,6 +24,7 @@ class AddHorasViewModel @Inject constructor(
 
     init {
         _addDatos.value = listOf(
+            "0.5",
             "1",
             "1.5",
             "2",
@@ -35,7 +36,6 @@ class AddHorasViewModel @Inject constructor(
             "5",
             "5.5",
             "6",
-            "6.5"
         )
     }
 
