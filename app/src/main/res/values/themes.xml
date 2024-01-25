@@ -57,7 +57,21 @@
         <item name="android:textColor">@color/secundario</item>
     </style>
 
-    <style name="TextoTituloVer">
+    <style name="TextosSp">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="TextoVer">
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="TextosTexViewVer">
+        <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/secundario</item>
