@@ -5,42 +5,136 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.bertosoft.incidencias.data.funciones.FuncAux
 import com.bertosoft.newincidencias.R
 import com.bertosoft.newincidencias.databinding.FragmentVerBinding
+import com.bertosoft.newincidencias.ui.ver.adapter.VerAdapter
 import java.util.Calendar
 
 class VerFragment : Fragment() {
 
     private var _binding: FragmentVerBinding? = null
     val binding get() = _binding!!
+    private val verViewModel: VerViewModel by viewModels()
+    private lateinit var verAdapter: VerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initListeners()
+        initUi()
+    }
+
+    private fun initListeners() {
+
+        binding.spMeses.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position > 0) {
+                    refrescaTvTitulo()
+                    refrescaListaIncidencias()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
+
+        binding.spAnos.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position > 0) {
+                    refrescaTvTitulo()
+                    refrescaListaIncidencias()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+        }
+    }
+
+    private fun initUi() {
+        initRv()
         initSp()
+        refrescaTvTitulo()
+    }
+
+    private fun initRv() {
+        verAdapter = VerAdapter()
+        binding.rvIncidencias.apply {
+            layoutManager = GridLayoutManager(context, 1)
+            adapter = verAdapter
+        }
+    }
+
+    private fun refrescaListaIncidencias() {
+        verAdapter.refrescaLista(
+            verViewModel.getListadoIncidencias(
+                this.requireContext(),
+                binding.spMeses.selectedItem.toString(),
+                binding.spAnos.selectedItem.toString()
+            )
+        )
+    }
+
+    private fun refrescaTvTitulo() {
+        val iMes = FuncAux().mesStrToInt(binding.spMeses.selectedItem.toString())
+        val strAno = binding.spAnos.selectedItem.toString()
+        val iAno = strAno.toInt()
+        val fecha = Calendar.getInstance()
+
+        fecha.set(Calendar.DAY_OF_MONTH, 20)
+        fecha.set(Calendar.MONTH, iMes)
+        fecha.set(Calendar.YEAR, iAno)
+
+        val strFechaFinal = FuncAux().strFechaCortaFromCalendar(fecha)
+        fecha.add(Calendar.MONTH, -1)
+        fecha.set(Calendar.DAY_OF_MONTH, 21)
+        val strFechaInicial = FuncAux().strFechaCortaFromCalendar(fecha)
+
+        val str = "Listado del $strFechaInicial al $strFechaFinal"
+        binding.tvTitulo.text = str
     }
 
     private fun initSp() {
         initSpAnos()
         initSpMeses()
+        binding.spAnos.setSelection(1)
+        binding.spMeses.setSelection(Calendar.getInstance().get(Calendar.MONTH))
     }
 
     private fun initSpMeses() {
         var meses = arrayOf<String>()
 
-        meses += "enero"
-        meses += "febrero"
-        meses += "marzo"
-        meses += "abril"
-        meses += "mayo"
-        meses += "enero"
-        meses += "enero"
-        meses += "enero"
-        meses += "enero"
-        meses += "enero"
-        meses += "enero"
-        meses += "enero"
+        meses += "Enero"
+        meses += "Febrero"
+        meses += "Marzo"
+        meses += "Abril"
+        meses += "Mayo"
+        meses += "Junio"
+        meses += "Julio"
+        meses += "Agosto"
+        meses += "Septiembre"
+        meses += "Octubre"
+        meses += "Noviembre"
+        meses += "Diciembre"
 
 
         val aaAdaptadorSpinner = ArrayAdapter(
@@ -56,13 +150,13 @@ class VerFragment : Fragment() {
     private fun initSpAnos() {
         var anos = arrayOf<String>()
 
-        anos += "2021"
-        anos += "2022"
-        anos += "2023"
-        anos += "2024"
-
-        val ano = Calendar.getInstance()
-
+        var iAnoActual = Calendar.getInstance().get(Calendar.YEAR)
+        iAnoActual++
+        val iAnoFinal = iAnoActual - 10
+        while (iAnoActual > iAnoFinal) {
+            anos += iAnoActual.toString()
+            iAnoActual--
+        }
         val aaAdaptadorSpinner = ArrayAdapter(
             this.requireContext(),
             R.layout.item_sp,

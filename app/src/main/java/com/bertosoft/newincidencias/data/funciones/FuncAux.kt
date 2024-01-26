@@ -16,8 +16,7 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 import javax.inject.Inject
 
- private val gKey = SecretKeySpec("Mi Clave Secreta".toByteArray(), "AES")
-
+private val gKey = SecretKeySpec("Mi Clave Secreta".toByteArray(), "AES")
 
 
 class FuncAux @Inject constructor() {
@@ -96,7 +95,7 @@ class FuncAux @Inject constructor() {
         imm!!.hideSoftInputFromWindow(miTxt.getWindowToken(), 0)
     }
 
-    fun existeRegistroFecha(contexto: Context, fechaCod: String): Int{
+    fun existeRegistroFecha(contexto: Context, fechaCod: String): Int {
         var idRegistro = -1
         val adminDbHlper = AdminDbHelper(contexto, null)
         val sqlReadDb = adminDbHlper.readableDatabase
@@ -111,7 +110,7 @@ class FuncAux @Inject constructor() {
                 val fechaDb = descifrar(fechaDbCod)
                 val fecha = descifrar(fechaCod)
 
-                if(fechaDb == fecha){
+                if (fechaDb == fecha) {
                     idRegistro = idDb
                 }
                 cIncidencias.moveToNext()
@@ -123,7 +122,7 @@ class FuncAux @Inject constructor() {
         return idRegistro
     }
 
-    fun leerVoladurasFromId(contexto: Context, _id: Int): String{
+    fun leerVoladurasFromId(contexto: Context, _id: Int): String {
         var voladurasCod = ""
         val adminDbHlper = AdminDbHelper(contexto, null)
         val sqlReadDb = adminDbHlper.readableDatabase
@@ -135,7 +134,7 @@ class FuncAux @Inject constructor() {
                 val idDb = cIncidencias.getInt(iColId)
                 val voladurasDb = cIncidencias.getString(iColVoladuras)
 
-                if(_id == idDb){
+                if (_id == idDb) {
                     voladurasCod = voladurasDb
                 }
                 cIncidencias.moveToNext()
@@ -147,14 +146,54 @@ class FuncAux @Inject constructor() {
         return voladurasCod
     }
 
-    fun strFechaCortaFromCalendar(fecha: Calendar): String{
+    fun strFechaCortaFromCalendar(fecha: Calendar): String {
         val sdfCorta = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         return sdfCorta.format(fecha.time)
     }
 
-    fun strFechaLargaFromCalendar(fecha: Calendar): String{
+    fun strFechaLargaFromCalendar(fecha: Calendar): String {
         val sdfLarga = SimpleDateFormat("EEEE, dd 'de' MMMM 'de' yyyy", Locale.getDefault())
         return sdfLarga.format(fecha.time)
+    }
+
+    fun mesStrToInt(mes: String): Int {
+        return when (mes) {
+            "Enero" -> 0
+            "Febrero" -> 1
+            "Marzo" -> 2
+            "Abril" -> 3
+            "Mayo" -> 4
+            "Junio" -> 5
+            "Julio" -> 6
+            "Agosto" -> 7
+            "Septiembre" -> 8
+            "Octubre" -> 9
+            "Noviembre" -> 10
+            "Diciembre" -> 11
+            else -> {
+                -1
+            }
+        }
+    }
+
+    fun mesIntToStr(iMes: Int): String{
+        return when(iMes){
+            0 -> "Enero"
+            1 -> "Febrero"
+            2 -> "Marzo"
+            3 -> "Abril"
+            4 -> "Mayo"
+            5 -> "Junio"
+            6 -> "Julio"
+            7 -> "Agosto"
+            8 -> "Septiembre"
+            9 -> "Octubre"
+            10 -> "Noviembre"
+            11 -> "Diciembre"
+            else -> {
+                "Error"
+            }
+        }
     }
 
 }
