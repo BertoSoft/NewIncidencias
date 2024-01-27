@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bertosoft.newincidencias.R
+import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
 import com.bertosoft.newincidencias.ui.addhoras.adapter.AddHorasViewHolder
 
-class VerAdapter(private var lista: List<String> = emptyList()): RecyclerView.Adapter<VerViewHolder>() {
+class VerAdapter(private var lista: List<IncidenciasModelDomain> = emptyList()): RecyclerView.Adapter<VerViewHolder>() {
 
-    fun refrescaLista(nuevaLista: List<String>) {
+    fun refrescaLista(nuevaLista: List<IncidenciasModelDomain>) {
         lista = nuevaLista
         notifyDataSetChanged()
     }

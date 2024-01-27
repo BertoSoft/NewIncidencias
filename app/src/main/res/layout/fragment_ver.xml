@@ -51,7 +51,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvIncidencias"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="275dp"
             android:background="@color/azul"
             android:layout_marginTop="8dp"

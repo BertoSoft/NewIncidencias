@@ -13,9 +13,12 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.bertosoft.incidencias.data.funciones.FuncAux
 import com.bertosoft.newincidencias.R
 import com.bertosoft.newincidencias.databinding.FragmentVerBinding
+import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
 import com.bertosoft.newincidencias.ui.ver.adapter.VerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
+@AndroidEntryPoint
 class VerFragment : Fragment() {
 
     private var _binding: FragmentVerBinding? = null

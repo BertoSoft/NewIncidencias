@@ -77,5 +77,14 @@
         <item name="android:textColor">@color/secundario</item>
     </style>
 
+    <style name="TextoRvVer">
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+
 
 </resources>
