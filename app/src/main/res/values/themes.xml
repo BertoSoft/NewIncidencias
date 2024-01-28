@@ -10,6 +10,8 @@
 
     <style name="Theme.NewIncidencias" parent="Base.Theme.NewIncidencias" />
 
+    <!-- Textos Add -->
+
     <style name="TextosRvAdd">
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
@@ -17,6 +19,7 @@
         <item name="android:textColor">@color/secundario</item>
     </style>
 
+    <!-- Textos Add Horas-->
     <style name="TextoAddHoras">
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
         <item name="android:textSize">20sp</item>
@@ -37,6 +40,7 @@
         <item name="android:textColor">@color/secundario</item>
     </style>
 
+    <!-- Textos Edit -->
     <style name="BotonMasEdit">
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
@@ -57,6 +61,7 @@
         <item name="android:textColor">@color/secundario</item>
     </style>
 
+    <!-- Textos Ver -->
     <style name="TextosSp">
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
@@ -64,25 +69,39 @@
         <item name="android:textColor">@color/secundario</item>
     </style>
 
-    <style name="TextoVer">
+    <style name="TextoTituloVer">
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/secundario</item>
     </style>
 
-    <style name="TextosTexViewVer">
+    <style name="TextosTexViewResumenVer">
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="TextosTexViewCantidadVer">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/secundario</item>
+    </style>
+
+    <style name="TextoExplicativosVer">
+        <item name="android:fontFamily">@font/domine_variable_font_wght</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="TextoRvVer">
         <item name="android:fontFamily">@font/domine_variable_font_wght</item>
         <item name="android:textSize">18sp</item>
         <item name="android:gravity">center</item>
-
-        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 

@@ -1,9 +1,7 @@
 package com.bertosoft.newincidencias.ui.ver.adapter
 
 import android.view.View
-import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.RecyclerView
-import com.bertosoft.incidencias.data.funciones.FuncAux
 import com.bertosoft.newincidencias.databinding.ItemVerBinding
 import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
 

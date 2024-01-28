@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Spinners -->
         <Spinner
             android:id="@+id/spAnos"
             android:layout_width="125dp"
@@ -37,11 +38,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/spAnos"/>
 
+        <!-- Texto Titulo Ver -->
         <TextView
             android:id="@+id/tvTitulo"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            style="@style/TextoVer"
+            android:layout_height="40dp"
+            style="@style/TextoTituloVer"
             android:gravity="center"
             android:text="Listado del 21/02/2024 al 20/03/2024"
             android:layout_marginTop="8dp"
@@ -49,74 +51,184 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spMeses"/>
 
+        <!-- Textos Explicativos Ver -->
+        <TextView
+            android:id="@+id/tvFecha"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="12dp"
+            style="@style/TextoExplicativosVer"
+            android:text="Fecha"
+            android:background="@color/azul"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvTextoHed"/>
+
+        <TextView
+            android:id="@+id/tvTextoHed"
+            android:layout_width="45dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            style="@style/TextoExplicativosVer"
+            android:text="Hed"
+            android:background="@color/azul"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+            app:layout_constraintEnd_toStartOf="@id/tvTextoHen"/>
+
+        <TextView
+            android:id="@+id/tvTextoHen"
+            android:layout_width="45dp"
+            android:layout_height="35dp"
+            style="@style/TextoExplicativosVer"
+            android:text="Hen"
+            android:background="@color/azul"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+            app:layout_constraintEnd_toStartOf="@id/tvTextoHef"/>
+
+        <TextView
+            android:id="@+id/tvTextoHef"
+            android:layout_width="45dp"
+            android:layout_height="35dp"
+            style="@style/TextoExplicativosVer"
+            android:text="Hef"
+            android:background="@color/azul"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+            app:layout_constraintEnd_toStartOf="@id/tvTextoVoladuras"/>
+
+        <TextView
+            android:id="@+id/tvTextoVoladuras"
+            android:layout_width="53dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="12dp"
+            style="@style/TextoExplicativosVer"
+            android:text="Vol."
+            android:background="@color/azul"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- REcycler View -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvIncidencias"
             android:layout_width="match_parent"
-            android:layout_height="275dp"
+            android:layout_height="250dp"
             android:background="@color/azul"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitulo"/>
+            app:layout_constraintTop_toBottomOf="@id/tvFecha"/>
 
+        <!-- Textos Resumen Ver -->
         <TextView
-            android:id="@+id/tvHed"
-            android:layout_width="match_parent"
+            android:id="@+id/tvResumenHed"
+            android:layout_width="0dp"
             android:layout_height="25dp"
-            style="@style/TextosTexViewVer"
-            android:text="Horas Extras Diurnas 22.5 Horas"
+            style="@style/TextosTexViewResumenVer"
+            android:text="Total Horas Extras Diurnas"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/rvIncidencias"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/tvHed"/>
 
         <TextView
-            android:id="@+id/tvHen"
-            android:layout_width="match_parent"
+            android:id="@+id/tvResumenHen"
+            android:layout_width="0dp"
             android:layout_height="25dp"
-            style="@style/TextosTexViewVer"
-            android:text="Horas Extras Nocturnas 2.5 Horas"
+            style="@style/TextosTexViewResumenVer"
+            android:text="Total Horas Extras Nocturnas"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tvHed"
+            app:layout_constraintTop_toBottomOf="@id/tvResumenHed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/tvHen"/>
 
         <TextView
-            android:id="@+id/tvHef"
-            android:layout_width="match_parent"
+            android:id="@+id/tvResumenHef"
+            android:layout_width="0dp"
             android:layout_height="25dp"
-            style="@style/TextosTexViewVer"
-            android:text="Horas Extras Festivos 2.5 Horas"
+            style="@style/TextosTexViewResumenVer"
+            android:text="Total Horas Extras Festivos"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tvHen"
+            app:layout_constraintTop_toBottomOf="@id/tvResumenHen"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/tvHef"/>
 
         <TextView
-            android:id="@+id/tvVoladuras"
-            android:layout_width="match_parent"
+            android:id="@+id/tvResumenVoladuras"
+            android:layout_width="0dp"
             android:layout_height="25dp"
-            style="@style/TextosTexViewVer"
-            android:text="Plus de Voladuras 2.5 Unidades"
+            style="@style/TextosTexViewResumenVer"
+            android:text="Total Plus de Voladuras"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tvHef"
+            app:layout_constraintTop_toBottomOf="@id/tvResumenHef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvVoladuras"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <!-- Progress bar -->
+        <ProgressBar
+            android:id="@+id/pbCargando"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <!-- Textos Cantidad Ver -->
+        <TextView
+            android:id="@+id/tvHed"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            style="@style/TextosTexViewCantidadVer"
+            android:text="18.5 H."
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/rvIncidencias"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
+        <TextView
+            android:id="@+id/tvHen"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            style="@style/TextosTexViewCantidadVer"
+            android:text="20.0 H."
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvHed"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
+        <TextView
+            android:id="@+id/tvHef"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            style="@style/TextosTexViewCantidadVer"
+            android:text="2.5 H."
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvHen"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvVoladuras"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            style="@style/TextosTexViewCantidadVer"
+            android:text="22.5 Ud."
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvHef"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

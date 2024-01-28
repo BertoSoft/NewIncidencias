@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bertosoft.newincidencias.R
 import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
-import com.bertosoft.newincidencias.ui.addhoras.adapter.AddHorasViewHolder
 
 class VerAdapter(private var lista: List<IncidenciasModelDomain> = emptyList()): RecyclerView.Adapter<VerViewHolder>() {
 

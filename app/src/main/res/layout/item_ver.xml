@@ -21,9 +21,8 @@
 
     <TextView
         android:id="@+id/tvHed"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
         style="@style/TextoRvVer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvHen"
@@ -31,9 +30,8 @@
 
     <TextView
         android:id="@+id/tvHen"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
         style="@style/TextoRvVer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvHef"
@@ -41,9 +39,8 @@
 
     <TextView
         android:id="@+id/tvHef"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
         style="@style/TextoRvVer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tvVoladuras"
@@ -51,12 +48,19 @@
 
     <TextView
         android:id="@+id/tvVoladuras"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="25dp"
-        android:layout_marginEnd="8dp"
         style="@style/TextoRvVer"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/secundario"
+        app:layout_constraintTop_toBottomOf="@id/tvTexto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

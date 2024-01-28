@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.bertosoft.incidencias.data.funciones.FuncAux
 import com.bertosoft.newincidencias.R
 import com.bertosoft.newincidencias.databinding.FragmentVerBinding
-import com.bertosoft.newincidencias.domain.model.IncidenciasModelDomain
 import com.bertosoft.newincidencias.ui.ver.adapter.VerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
@@ -30,7 +29,17 @@ class VerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initListeners()
+        initObservers()
         initUi()
+    }
+
+    private fun initObservers() {
+        //
+        // Si hay cambios en el LiveData Cargando, ejecutamos
+        //
+        verViewModel.liveDataCargando.observe(viewLifecycleOwner) {
+            binding.pbCargando.isVisible = it
+        }
     }
 
     private fun initListeners() {
@@ -42,10 +51,8 @@ class VerFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                if (position > 0) {
-                    refrescaTvTitulo()
-                    refrescaListaIncidencias()
-                }
+                refrescaTvTitulo()
+                refrescaListaIncidencias()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -61,10 +68,8 @@ class VerFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                if (position > 0) {
-                    refrescaTvTitulo()
-                    refrescaListaIncidencias()
-                }
+                refrescaTvTitulo()
+                refrescaListaIncidencias()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
