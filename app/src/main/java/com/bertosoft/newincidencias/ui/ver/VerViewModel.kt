@@ -14,10 +14,21 @@ import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
-class VerViewModel @Inject constructor(private val getIncidenciasUseCase: GetIncidenciasUseCase) :
-    ViewModel() {
+class VerViewModel @Inject constructor(
+    private val getIncidenciasUseCase: GetIncidenciasUseCase
+) : ViewModel() {
 
     val liveDataCargando = MutableLiveData<Boolean>()
+
+    private var _hed: Double = 0.0
+    private var _hen: Double = 0.0
+    private var _hef: Double = 0.0
+    private var _voladuras: Double = 0.0
+
+    val hed get() =  _hed
+    val hen get() =  _hen
+    val hef get() =  _hef
+    val voladuras get() =  _voladuras
 
     fun getListadoIncidencias(
         contexto: Context,
@@ -57,9 +68,14 @@ class VerViewModel @Inject constructor(private val getIncidenciasUseCase: GetInc
         fecha.set(Calendar.MONTH, fechaInicial.get(Calendar.MONTH))
         fecha.set(Calendar.YEAR, fechaInicial.get(Calendar.YEAR))
 
+        //
+        // Ponemos los contadores de incidencias a cero
+        //
+        resetValores()
+
         viewModelScope.launch() {
             liveDataCargando.postValue(true)
-            val result = with(Dispatchers.IO){
+            val result = with(Dispatchers.IO) {
                 while (fecha.before(fechaFinal)) {
                     val incidencias =
                         getIncidenciasUseCase(contexto, FuncAux().strFechaCortaFromCalendar(fecha))
@@ -69,6 +85,7 @@ class VerViewModel @Inject constructor(private val getIncidenciasUseCase: GetInc
                         incidencias.voladuras != ""
                     ) {
                         listaIncidencias.add(incidencias)
+                        addContadores(incidencias)
                     }
                     fecha.add(Calendar.DAY_OF_MONTH, 1)
                 }
@@ -76,5 +93,19 @@ class VerViewModel @Inject constructor(private val getIncidenciasUseCase: GetInc
             liveDataCargando.postValue(false)
         }
         return listaIncidencias
+    }
+
+    private fun addContadores(incidencias: IncidenciasModelDomain) {
+        if(incidencias.hed != ""){_hed += incidencias.hed.toDouble()}
+        if(incidencias.hen != ""){_hen += incidencias.hen.toDouble()}
+        if(incidencias.hef != ""){_hef += incidencias.hef.toDouble()}
+        if(incidencias.voladuras != ""){_voladuras += incidencias.voladuras.toDouble()}
+    }
+
+    private fun resetValores() {
+        _hed = 0.0
+        _hen = 0.0
+        _hef = 0.0
+        _voladuras = 0.0
     }
 }

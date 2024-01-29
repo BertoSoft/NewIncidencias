@@ -8,6 +8,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.bertosoft.newincidencias.R
 import com.bertosoft.newincidencias.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -21,6 +24,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initUi()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        grabarDatos()
+    }
+
+    private fun grabarDatos() {
+        val fileOrigen = File(this.getDatabasePath("Incidencias.db").absolutePath)
+        val fileDestino = File(this.getExternalFilesDir(null)!!.absolutePath + "/Incidencias.db")
+
+        Files.copy(
+            fileOrigen.toPath(),
+            fileDestino.toPath(),
+            StandardCopyOption.REPLACE_EXISTING
+        )
     }
 
     private fun initUi() {

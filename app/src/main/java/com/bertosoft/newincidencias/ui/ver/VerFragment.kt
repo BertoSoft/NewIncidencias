@@ -21,7 +21,7 @@ import java.util.Calendar
 class VerFragment : Fragment() {
 
     private var _binding: FragmentVerBinding? = null
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
     private val verViewModel: VerViewModel by viewModels()
     private lateinit var verAdapter: VerAdapter
 
@@ -100,6 +100,19 @@ class VerFragment : Fragment() {
                 binding.spAnos.selectedItem.toString()
             )
         )
+        refrescaContadores()
+    }
+
+    private fun refrescaContadores() {
+        val strHed =  "${verViewModel.hed}  Horas"
+        val strHen =  "${verViewModel.hen}  Horas"
+        val strHef =  "${verViewModel.hef}  Horas"
+        val strVoladuras = "${verViewModel.voladuras} Unid. "
+
+        binding.tvHed.text = strHed
+        binding.tvHen.text = strHen
+        binding.tvHef.text = strHef
+        binding.tvVoladuras.text = strVoladuras
     }
 
     private fun refrescaTvTitulo() {
