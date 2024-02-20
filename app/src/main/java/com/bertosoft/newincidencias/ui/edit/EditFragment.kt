@@ -64,38 +64,39 @@ class EditFragment : Fragment() {
         }
 
         binding.etHed.setOnFocusChangeListener { v, hasFocus ->
-            if(hasFocus){
+            if (hasFocus) {
                 binding.etHed.postDelayed(
                     {
                         binding.etHed.selectAll()
-                    },50
+                    }, 50
                 )
             }
         }
         binding.etHen.setOnFocusChangeListener { v, hasFocus ->
-            if(hasFocus){
+            if (hasFocus) {
                 binding.etHen.postDelayed(
                     {
                         binding.etHen.selectAll()
-                    },50
+                    }, 50
                 )
             }
         }
         binding.etHef.setOnFocusChangeListener { v, hasFocus ->
-            if(hasFocus){
+            if (hasFocus) {
                 binding.etHef.postDelayed(
                     {
                         binding.etHef.selectAll()
-                    },50
-                )            }
+                    }, 50
+                )
+            }
         }
 
         binding.etHef.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
-            if(keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP ){
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
                 binding.etHef.postDelayed(
                     {
                         FuncAux().ocultarTeclado(binding.etHef.context, binding.etHef)
-                    },50
+                    }, 50
                 )
                 return@OnKeyListener true
             }
@@ -119,7 +120,17 @@ class EditFragment : Fragment() {
             hef,
             voladuras
         )
-        editViewModel.setIncidencias(incidencias)
+
+        //
+        // Guardo valores solo si uno de ellos es distinto de ""
+        //
+        if (incidencias.hed != "" ||
+            incidencias.hen != "" ||
+            incidencias.hef != "" ||
+            incidencias.voladuras != ""
+        ) {
+            editViewModel.setIncidencias(incidencias)
+        }
     }
 
     private fun initUi() {
@@ -128,7 +139,10 @@ class EditFragment : Fragment() {
     }
 
     private fun rellenaCampos() {
-        val incidencias = editViewModel.getIncidencias(this.requireContext(), FuncAux().strFechaCortaFromCalendar(fecha))
+        val incidencias = editViewModel.getIncidencias(
+            this.requireContext(),
+            FuncAux().strFechaCortaFromCalendar(fecha)
+        )
         binding.etHed.setText(editViewModel.toTextView(incidencias.hed))
         binding.etHen.setText(editViewModel.toTextView(incidencias.hen))
         binding.etHef.setText(editViewModel.toTextView(incidencias.hef))

@@ -16,12 +16,20 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 import javax.inject.Inject
 
-private val gKey = SecretKeySpec("Mi Clave Secreta".toByteArray(), "AES")
-
+private val gKey = SecretKeySpec("U82HuXLNzbX3f6r".toByteArray(), "AES")
+private val gIv = IvParameterSpec("epDKqfVtYXhdXgb".toByteArray())
 
 class FuncAux @Inject constructor() {
 
-    fun cifrar(inputText: String): String {
+    fun cifrar(inputText: String): String{
+        return inputText
+    }
+
+    fun descifrar(cipherText: String): String{
+        return cipherText
+    }
+
+    fun cifrarOld(inputText: String): String {
 
         //
         // Obtenemos una iv aleatoria
@@ -52,7 +60,7 @@ class FuncAux @Inject constructor() {
         return strTextoCodIvHex
     }
 
-    fun descifrar(cipherText: String): String {
+    fun descifrarOld(cipherText: String): String {
 
         //
         // Obtenemos la byteIv y la iv

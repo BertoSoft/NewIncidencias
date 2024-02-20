@@ -44,7 +44,7 @@ class VerViewModel @Inject constructor(
         // Obtenemos la fecha final
         //
         val fechaFinal = Calendar.getInstance()
-        fechaFinal.set(Calendar.DAY_OF_MONTH, 20)
+        fechaFinal.set(Calendar.DAY_OF_MONTH, 21)
         fechaFinal.set(Calendar.MONTH, iMes)
         fechaFinal.set(Calendar.YEAR, iAno)
 

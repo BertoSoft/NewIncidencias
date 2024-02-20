@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewIncidencias</string>
+    <string name="app_name">Incidencias</string>
 
     <!-- Texto Iconos pantalla Add -->
     <string name="HED">H.E.D.</string>
